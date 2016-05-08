@@ -1,0 +1,80 @@
+<!-- <html>
+     <head>
+
+     <script>
+
+     function requestListener() {
+     
+     
+     var xhr = new XMLHttpRequest();
+     // xhr.addEventListener("load", requestListener);
+     if(xhr.readyState == 4 && xhr.status==200) {
+     document.getElementById("data").innerHTML = xhr.responseText;	 
+     };
+     console.log(xhr.responseText);
+     xhr.open("GET", "http://kelleyperry.github.io/carDB.json");
+     xhr.send();	 
+     
+     
+     }
+     </script>
+     
+     </head>
+     <body>
+     <p id="data"></p>
+     <button onclick="requestListener()">Show stuff</button>
+
+     
+     </body>
+     </html> -->
+<html>
+    <head>
+	
+    
+	<script type="text/javascript">
+	 
+	 function SendRequest () {
+          
+	     xhr = new XMLHttpRequest(); 
+	     var url = "http://kelleyperry.github.io/carDB.json";
+	     xhr.open ("GET", url, true);
+	     xhr.onreadystatechange = OnStateChange;
+	     xhr.send (null);
+          
+	 }
+	 
+	 function OnStateChange () {
+	     if (xhr.readyState == 4 && xhr.status == 200) {
+		 document.getElementById("data").innerHTML = getCarList();
+	     }
+	 }
+
+	 function getCarList() {
+	     var myArr = JSON.parse(xhr.responseText);
+	     console.log(myArr);
+	     for (var props in myArr) {
+		 console.log("my props 1 " + props[props]);
+		 for(var models in myArr[props]) {
+		     console.log("my props 2 " + props);
+		     for (var id in myArr[props][models]) {
+			 console.log("my props 3 " + props);
+		console.log(props + " > " + [props][models][models]);
+			 	
+			 
+		     }
+		     
+		 }
+		
+		 //	 return myArr.makes[1].models[1].id;
+		 
+	     }
+	 }
+
+    </script>
+</head>
+<body>
+   
+    <button onclick="SendRequest()">Test responseText property</button>
+    <p id='data'></p>
+</body>
+</html>
