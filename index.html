@@ -24,12 +24,23 @@
 	     var myArr = JSON.parse(xhr.responseText);
 	     console.log(myArr);
             
-             for (key in myArr.makes) {
-                 var obj = myArr.makes[key];
-                 console.log(obj.name);
-                 document.getElementById("data").innerHTML += obj.name + "<br />";
-                     
-                     
+             for (key in myArr) {
+                 // var obj = myArr.makes[key];
+               //  console.log(obj.name);
+              //   document.getElementById("data").innerHTML += obj.name + "<br />";
+
+                 var obj = myArr[key];
+
+                 for (prop in obj) {
+
+                     console.log(prop + " = " + JSON.stringify(obj[prop].models[0]));
+
+                     var subObj = myArr[obj[prop].models[0]];
+
+                     /* for (prop in subObj) {
+                        console.log(prop + " = " ) + ;
+                        } */
+                 }
 
              }
              
