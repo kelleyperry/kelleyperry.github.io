@@ -16,37 +16,26 @@
 	 
 	 function OnStateChange () {
 	     if (xhr.readyState == 4 && xhr.status == 200) {
-		 document.getElementById("data").innerHTML = getCarList();
+		 getCarList();
 	     }
 	 }
 
 	 function getCarList() {
 	     var myArr = JSON.parse(xhr.responseText);
 	     console.log(myArr);
-	     /* for (var props in myArr) {
-		console.log("my props 1 " + props[props]);
-		for(var models in myArr[props]) {
-		console.log("my props 2 " + props);
-		for (var id in myArr[props][models]) {
-		console.log("my props 3 " + props);
-		console.log(props + " > " + [props][models][models]);
-		
-		
-		}
-		
-		}
-		
-		//	 return myArr.makes[1].models[1].id;
-		
-	        } */
+            
+             for (key in myArr.makes) {
+                 var obj = myArr.makes[key];
+                 console.log(obj.name);
+                 document.getElementById("data").innerHTML += obj.name + "<br />";
+                     
+                     
 
-             for (key in myArr) {
-                 if(myArr.hasOwnProperty(key)) {
-                     console.log(key + " -> " + myArr[key][0].name);
-                     return key + " -> " + myArr[key][0].name;
-                 }
              }
-	 }
+             
+             
+         }
+	 
 
     </script>
 </head>
